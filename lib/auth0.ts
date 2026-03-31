@@ -5,7 +5,7 @@ export const auth0 = new Auth0Client({
     audience: process.env.AUTH0_AUDIENCE,
     // We removed 'offline_access' so Auth0 stops panicking!
     scope: "openid profile email", 
-    connection_scope: "repo",
-    connection: "github" 
+    connection_scope: "repo"
+    // connection: "github" 
   }
 });
