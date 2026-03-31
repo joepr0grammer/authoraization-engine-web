@@ -6,7 +6,7 @@ export async function POST(req: Request) {
     const { token } = await auth0.getAccessToken();
     const body = await req.json();
 
-    const response = await fetch('http://localhost:8000/api/approve-ciba', {
+    const response = await fetch('https://authoraization-engine-api.onrender.com/api/approve-ciba', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
