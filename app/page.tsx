@@ -46,7 +46,7 @@ export default function Home() {
     setMessages((prev) => [...prev, `You: ${prompt}`]);
     
     try {
-      const res = await fetch('https://authoraization-engine-api.onrender.com/api/chat', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt })
@@ -75,7 +75,7 @@ export default function Home() {
     setIsSending(true);
     
     try {
-      const res = await fetch('https://authoraization-engine-api.onrender.com/api/approve-ciba', {
+      const res = await fetch('/api/approve', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pr_number: prNumber })
