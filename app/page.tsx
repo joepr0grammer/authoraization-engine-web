@@ -27,14 +27,15 @@ export default function Home() {
     setResetMessage("Connecting to GitHub to prime repository...");
     try {
       // 🛑 REPLACE WITH YOUR ACTUAL RENDER URL 🛑
-      const res = await fetch('https://authoraization-engine-api.onrender.com/reset-demo', { method: 'POST' });
+      const res = await fetch('https://authoraization-engine-api.onrender.com/api/reset-demo', { method: 'POST' });
       const data = await res.json();
       if (data.status === 'success') {
         setResetMessage(`✅ ${data.message} Proceed to Step 2.`);
       } else {
-        setResetMessage(`❌ Error: ${data.message}`);
-      }
-    } catch (err) {
+        // Fallback to data.detail (FastAPI's default error key) or stringify the whole crash!
+        const errorText = data.message || data.detail || JSON.stringify(data);
+        setResetMessage(`❌ Error: ${errorText}`);
+      }    } catch (err) {
       setResetMessage("❌ Failed to reach the backend server.");
     }
     setIsResetting(false);
