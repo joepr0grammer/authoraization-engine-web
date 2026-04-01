@@ -45,7 +45,7 @@ export default function Home() {
     setMessages((prev) => [...prev, `You: ${prompt}`]);
     
     try {
-      const res = await fetch('/chat', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt })
@@ -74,7 +74,7 @@ export default function Home() {
     setIsSending(true);
     
     try {
-      const res = await fetch('/approve', {
+      const res = await fetch('/api/approve', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pr_number: prNumber })
@@ -144,7 +144,7 @@ export default function Home() {
                 <span className="bg-blue-500/20 text-blue-400 rounded-full w-5 h-5 flex items-center justify-center text-xs">2</span> 
                 Authenticate Agent
               </h3>
-              <a href="/auth/login" className="w-full flex justify-center py-2.5 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-500 hover:to-teal-500 shadow-lg shadow-teal-500/25 transition-all duration-200">
+              <a href="/api/auth/login" className="w-full flex justify-center py-2.5 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-500 hover:to-teal-500 shadow-lg shadow-teal-500/25 transition-all duration-200">
                 Secure Login via Auth0
               </a>
             </div>
@@ -157,7 +157,7 @@ export default function Home() {
                 <h2 className="text-lg font-semibold text-gray-100">Welcome, {user.name === user.email ? user.nickname : (user.name || user.nickname || 'Developer')}</h2>
                 <p className="text-teal-500/80 text-[10px] font-mono bg-teal-900/20 px-2 py-0.5 rounded inline-block mt-1">Session Active</p>
               </div>
-              <a href="/auth/logout" className="ml-auto text-xs font-medium text-gray-500 hover:text-red-400 transition-colors px-3 py-1 rounded-md hover:bg-red-900/20">Disconnect</a>
+              <a href="/api/auth/logout" className="ml-auto text-xs font-medium text-gray-500 hover:text-red-400 transition-colors px-3 py-1 rounded-md hover:bg-red-900/20">Disconnect</a>
             </div>
 
             {/* REDUCED CHAT HEIGHT: h-80 to h-64 to save vertical space */}
