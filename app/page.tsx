@@ -21,7 +21,7 @@ export default function Home() {
     setResetMessage("Connecting to GitHub to prime repository...");
     
     try {
-      // NOTE: Ensure this points to your LIVE Render URL in production!
+      // This stays as /api/reset-demo because it points directly to the Python FastAPI backend
       const res = await fetch('https://authoraization-engine-api-xyz.onrender.com/api/reset-demo', {
         method: 'POST'
       });
@@ -45,7 +45,8 @@ export default function Home() {
     setMessages((prev) => [...prev, `You: ${prompt}`]);
     
     try {
-      const res = await fetch('/api/chat', {
+      // FIXED: Removed /api from the Next.js local route
+      const res = await fetch('/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ prompt })
@@ -74,7 +75,8 @@ export default function Home() {
     setIsSending(true);
     
     try {
-      const res = await fetch('/api/approve', {
+      // FIXED: Removed /api from the Next.js local route
+      const res = await fetch('/approve', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ pr_number: prNumber })
@@ -96,9 +98,10 @@ export default function Home() {
 
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm">
         
-        {/* Header Section with Logo */}
+        {/* Header Section with Scaled Up Logo */}
         <div className="flex flex-col items-center mb-12">
-          <div className="mb-6 relative w-24 h-24 sm:w-32 sm:h-32 drop-shadow-[0_0_15px_rgba(20,184,166,0.5)]">
+          {/* FIXED: Increased width and height significantly (w-48/h-48 up to w-64/h-64 on larger screens) */}
+          <div className="mb-6 relative w-48 h-48 sm:w-64 sm:h-64 drop-shadow-[0_0_20px_rgba(20,184,166,0.6)]">
             <Image 
               src="/logo.png" 
               alt="AuthorAIzation Engine Logo" 
@@ -143,7 +146,8 @@ export default function Home() {
                 <span className="bg-blue-500/20 text-blue-400 rounded-full w-6 h-6 flex items-center justify-center text-xs">2</span> 
                 Authenticate Agent
               </h3>
-              <a href="/api/auth/login" className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-500 hover:to-teal-500 shadow-lg shadow-teal-500/25 transition-all duration-200">
+              {/* FIXED: Removed /api from the login route */}
+              <a href="/auth/login" className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-bold rounded-xl text-white bg-gradient-to-r from-blue-600 to-teal-600 hover:from-blue-500 hover:to-teal-500 shadow-lg shadow-teal-500/25 transition-all duration-200">
                 Secure Login via Auth0
               </a>
             </div>
@@ -156,7 +160,8 @@ export default function Home() {
                 <h2 className="text-xl font-semibold text-gray-100">Welcome, {user.name === user.email ? user.nickname : (user.name || user.nickname || 'Developer')}</h2>
                 <p className="text-teal-500/80 text-xs font-mono bg-teal-900/20 px-2 py-1 rounded inline-block mt-1">Session Active</p>
               </div>
-              <a href="/api/auth/logout" className="ml-auto text-sm font-medium text-gray-500 hover:text-red-400 transition-colors px-3 py-1 rounded-md hover:bg-red-900/20">Disconnect</a>
+              {/* FIXED: Removed /api from the logout route */}
+              <a href="/auth/logout" className="ml-auto text-sm font-medium text-gray-500 hover:text-red-400 transition-colors px-3 py-1 rounded-md hover:bg-red-900/20">Disconnect</a>
             </div>
 
             <div className="h-80 bg-[#0a0a0a] rounded-xl border border-gray-800 p-6 mb-6 font-mono text-sm overflow-y-auto flex flex-col space-y-4 shadow-inner">
