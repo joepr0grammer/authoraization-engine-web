@@ -14,6 +14,5 @@ export const config = {
     // 2. We match the API routes the AI will use to talk to GitHub
     "/api/github/:path*",
     
-    // Notice we removed the catch-all. The home page (/) is now public!
   ]
 };

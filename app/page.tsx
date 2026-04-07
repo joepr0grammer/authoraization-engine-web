@@ -26,7 +26,6 @@ export default function Home() {
     setIsResetting(true);
     setResetMessage("Connecting to GitHub to prime repository...");
     try {
-      // 🛑 REPLACE WITH YOUR ACTUAL RENDER URL 🛑
       const res = await fetch('https://authoraization-engine-api.onrender.com/api/reset-demo', { method: 'POST' });
       const data = await res.json();
       if (data.status === 'success') {
@@ -34,9 +33,9 @@ export default function Home() {
       } else {
         // Fallback to data.detail (FastAPI's default error key) or stringify the whole crash!
         const errorText = data.message || data.detail || JSON.stringify(data);
-        setResetMessage(`❌ Error: ${errorText}`);
+        setResetMessage(`Error: ${errorText}`);
       }    } catch (err) {
-      setResetMessage("❌ Failed to reach the backend server.");
+      setResetMessage("Failed to reach the backend server.");
     }
     setIsResetting(false);
   };
