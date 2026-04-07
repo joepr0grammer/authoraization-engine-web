@@ -19,6 +19,7 @@ This is the Next.js web interface for the AuthorAIzation Engine. Built with Next
 
 3. **Configure Environment Variables:**
 Create a .env.local file in the root directory and add your Auth0 and Backend configurations:
+    ```bash
     # Auth0 Configuration
     NEXT_PUBLIC_AUTH0_DOMAIN=your-auth0-tenant.auth0.com
     NEXT_PUBLIC_AUTH0_CLIENT_ID=your_auth0_client_id
