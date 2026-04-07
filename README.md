@@ -11,7 +11,7 @@ This is the Next.js web interface for the AuthorAIzation Engine. Built with Next
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/joepr0grammer/authoraization-frontend.git](https://github.com/joepr0grammer/authoraization-frontend.git)
+   git clone https://github.com/joepr0grammer/authoraization-frontend.git
    cd authoraization-frontend
 
 2. **Install dependencies:**
