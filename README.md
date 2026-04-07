@@ -1,3 +1,4 @@
+
 ## Frontend Installation Guide
 
 This is the Next.js web interface for the AuthorAIzation Engine. Built with Next.js and styled with a dark-mode glassmorphism aesthetic, this frontend connects users securely via Auth0 to our Python/FastAPI AI Bouncer.
